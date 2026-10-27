@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>ZUNKA</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<header class="navbar"><div class="logo">⚡ <span>ZUNKA</span></div><div class="badge">v2.0 • GRÁTIS</div></header>
+<main class="container">
+<section class="hero"><h1>Baixe o que você quiser.<br><span>Sem enrolação.</span></h1><p>Cola o link e escolhe.</p></section>
+<section class="card">
+<div class="tabs"><button class="tab active" onclick="setType('musica',this)">🎵 Música MP3</button><button class="tab" onclick="setType('video',this)">🎬 Vídeo MP4</button></div>
+<div class="input-box"><input id="linkInput" type="text" placeholder="Cole seu link aqui..."><button onclick="baixar()">BAIXAR ➜</button></div>
+<div id="status" class="status hidden"></div>
+</section>
+</main>
+<script src="script.js"></script>
+</body>
+</html>
