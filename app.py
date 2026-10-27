@@ -19,8 +19,7 @@ def baixar():
     uid = str(uuid.uuid4())[:8]
     pasta = os.path.join(TMP, uid)
     os.makedirs(pasta, exist_ok=True)
-    # Truque anti-bot mais forte
-    base = ['yt-dlp','--no-warnings','--impersonate','chrome','--extractor-args','youtube:player_client=ios','--extractor-args','youtube:player_skip=webpage','--extractor-args','youtube:player_skip=webpage,configs']
+    base = ['yt-dlp','--no-warnings','--extractor-args','youtube:player_client=ios','--extractor-args','youtube:player_skip=webpage']
     if tipo == 'musica':
         cmd = base + ['-f','140/bestaudio','-o',f'{pasta}/%(title)s.%(ext)s',link]
     else:
