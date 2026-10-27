@@ -17,11 +17,13 @@ def baixar():
     link = dados.get('url')
     tipo = dados.get('tipo','musica')
     # Sem ffmpeg, direto
-    if tipo == 'musica':
-        cmd = ['yt-dlp','--no-warnings','-f','140/bestaudio','-o',f'{PASTA}/%(title)s.%(ext)s',link]
+    # Pra fingir que é celular e o YouTube deixar baixar
+    base = ['yt-dlp','--no-warnings','--extractor-args','youtube:player_client=android,ios','--impersonate','chrome']
+    if tipo=='musica':
+        cmd = base + ['-f','140/bestaudio','-o',f'{pasta}/%(title)s.%(ext)s',link]
     else:
-        cmd = ['yt-dlp','--no-warnings','-f','best[ext=mp4]/best','-o',f'{PASTA}/%(title)s.%(ext)s',link]
-    r = subprocess.run(cmd, capture_output=True, text=True)
+        cmd = base + ['-f','best[ext=mp4]/best','-o',f'{pasta}/%(title)s.%(ext)s',link]
+  r = subprocess.run(cmd, capture_output=True, text=True)
     print(r.stdout)
     print(r.stderr)
     if r.returncode==0:
